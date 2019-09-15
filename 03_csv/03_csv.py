@@ -23,11 +23,11 @@ def genDict(filename):
 
 
 ##CREATE ARRAY WITH 1000 ELEMENTS, OCCUPATION PROPORTIONAL TO PERCENTAGES
-def generateArray(occupdict):
+def genArray(occupdict):
     occuparray = []                                         #instantiate a list
     for key in occupdict.keys():                            #for all the keys in the dictionary do this
-        for i in range(int(occupdict[key]*10)):             #for the next percentage * 10 slots append the key from the dict
-            occuparray.append(key)
+        for i in range(int(float(key) * 10)):             #for the next percentage * 10 slots append the key from the dict
+            occuparray.append(occupdict[key])
     return occuparray                                       
 #print(len(occuparray))                     
 
