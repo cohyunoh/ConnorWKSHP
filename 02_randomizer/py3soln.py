@@ -1,3 +1,7 @@
+#Connor Oh
+#SoftDev1 pd9
+#K02 -- NO-body expects the Spanish Inquisition!
+#2019 - 09 - 11
 import random
 def randomselectlist(inputdict, index = random.randint(0, 2) ):
     if index == 0:
