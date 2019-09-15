@@ -11,8 +11,8 @@ with open('occupations.csv') as occupations:
     reader = csv.reader(occupations, delimiter=',')
     line_count = 0
     for row in reader:
-        if line_count > 0 and row[0] != 'total':
-            occupdict[row[0]]:row[1]
-            line_count += 1
+        if line_count > 0 and row[0] != 'Total':
+            occupdict[row[0]] = row[1]
+        line_count += 1
 
 print(occupdict)
