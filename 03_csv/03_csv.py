@@ -12,7 +12,8 @@ with open('occupations.csv') as occupations:
     line_count = 0                                      #define the line count
     for row in reader:                                  #for each row do this
         if line_count > 0 and row[0] != 'Total':        #if the line is not the first or last line do this
-            occupdict[row[0]] = row[1]                  #add the occupation as the key and the percentage as the value to the dictionary occupdict
+            occupdict[row[1]] = row[0]                  #add the occupation as the key and the percentage as the value to the dictionary occupdict
         line_count += 1                                 #increase line count
 
-print(occupdict)
+#print(occupdict)
+
