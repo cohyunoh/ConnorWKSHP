@@ -10,11 +10,11 @@ app = Flask(__name__) #create instance of class Flask
 def hello_world():
     print(__name__) #where will this go?
     return "No hablo queso!"
-@app.route("/") #assign following fxn to run when root route requested
+@app.route("/anotherone") #assign following fxn to run when root route requested
 def bye_world():
     print(__name__)
     return "Si hablo queso!"
-@app.route("/") #assign following fxn to run when root route requested
+@app.route("/lastone") #assign following fxn to run when root route requested
 def world():
     print(__name__)
     return "Cococococo"
