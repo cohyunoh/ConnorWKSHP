@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><center>{{ foo }}</center></title>
-        <br>
-        <title><center>{{ title }}</center></title>
+      <title>OccupationGenerator</title>
+      <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+      </style>
     </head>
 
     <body>
+        <h1><center>{{ foo }}</center><h1>
+        <br>
+        <h1><center>{{ title }}</center></h1>
+        <br>
+        <center>
         <h1>{{ subheading0 }}</h1>
         <br>
         <h2>{{ job }}</h2>
@@ -14,6 +22,7 @@
         <br>
         <h1>{{ subheading1 }}</h1>
         <br>
+
         <table style="width:100%">
           <tr>
             <th>Occupation</th>
@@ -30,6 +39,7 @@
             <td>99.8</td>
           </tr>
         </table>
+        </center>
     </body>
 
 </html>

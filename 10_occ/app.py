@@ -11,7 +11,7 @@ from flask import Flask, render_template
 import csv
 import random
 
-def genDict():
+def genDict(add):
     occupdict = {}                                          #instantiate occupdict as a dictionary
     total = 0;                                              #this will increase to show what ranges represent which occupations
     with open('occupations.csv') as occupations:
@@ -20,13 +20,16 @@ def genDict():
         for row in reader:                                  #for each row do this
             if line_count > 0 and row[0] != 'Total':        #if the line is not the first or last line do this
                 percentage = float(row[1])                  #convert the string percentage to a percentage
-                occupdict[row[0]] = round(percentage + total,1)  #add the occupation as the key and the percentage as the value to the dictionary occupdict
+                if (add == True):
+                    occupdict[row[0]] = round(percentage + total,1)  #add the occupation as the key and the percentage as the value to the dictionary occupdict
+                else:
+                    occupdict[row[0]] = percentage          #add the occupation as the key and the percentage as the value to the dictionary occupdict
                 total += percentage                         #add the percentage to total
             line_count += 1                                 #increase line count
 
     return occupdict
-dictionary = genDict()                                       #instantiate the dictionary
-
+dictionary = genDict(True)                                  #instantiate the dictionary with the zone values
+regdictionary = genDict(False)                              #instantiate the dictionary with the regular values
 def sol():
     rand = random.randint(1,998) * 0.1                      #get a random integer from 0 toi 998 and then times it by 0.1 to make it a float that can be
                                                             #compared with the percentages
@@ -38,17 +41,17 @@ def sol():
 
 ##########################################################
 app = Flask(__name__)                                       #instantiate Flask
-heading = "Nahi Khan, Connor Oh, Winston Peng [Team Beaker]/nSoftDev1 pd9/nK10 -- Jinja Tuning/n2019 - 09 - 23" #our heading
+heading = "Nahi Khan, Connor Oh, Winston Peng [Team Beaker]\nSoftDev1 pd9\nK10 -- Jinja Tuning\n2019 - 09 - 23" #our heading
 @app.route("/occupyflaskst")                                #the route we will be using to access our table
 def template():
     return render_template(
         'pizza.html',                                       #the html file in templates/
         foo = heading,                                      #will be used for heading
         title = "Wheel Of Occupations (Imagine There's A Wheel):",                     #the title of our program
-        subheading0 = "Your Selection",                     #other title before randomly selected occupation
-        subheading1 = "What You Missed Out On",             #other title before list of occupations
+        subheading0 = "Your Selection:",                     #other title before randomly selected occupation
+        subheading1 = "What You Missed Out On:",             #other title before list of occupations
         job = sol(),                                        #randomly selected job
-        occupations = dictionary                            #jobs
+        occupations = regdictionary                            #jobs
     )
 app.debug = True
 app.run()
