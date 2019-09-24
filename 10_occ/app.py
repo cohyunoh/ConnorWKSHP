@@ -11,9 +11,9 @@ from flask import Flask, render_template
 import csv
 import random
 
-file = open("occupations.csv","r")
-readfile = file.readlines()
-file = readfile.pop(0)
+file = open("occupations.csv","r")                          #open file with reading capabilities
+readfile = file.readlines()                                 #read each line and put them as a list of strings
+file = readfile.pop(0)                                      #pop off first line
 dictionary = {}                                             #instantiate the dictionary
 def sol():
 
@@ -25,7 +25,7 @@ def sol():
                                                             #     from 5.6 to 11.7
     for line in file:                                       #for every line in file
         idx = line.rfind(",")                               #find the index of the comma in each line
-        job = line[0:idx]                                   #assign the job var to the first part of the line which is a list of strings (0 to index of comma excludes the comma)
+        job = line[0:idx]                                   #assign the job var to the first part of the line which is a string (0 to index of comma excludes the comma)
         percent = float(line[idx+1:-1])                     #assign the percent var to the second part of the list and makes it a float
         dictionary[job] = round(percent + total,1);         #add the dictionary the occupation as the key and the sum of the total and percentage rounded to the ones decimal
                                                             #   place
@@ -45,13 +45,13 @@ heading = "Nahi Khan, Connor Oh, Winston Peng [Team Beaker]/nSoftDev1 pd9/nK10 -
 @app.route("/occupyflaskst")                                #the route we will be using to access our table
 def template():
     return render_template(
-        'pizza.html',
-        foo = heading,
-        title = "The Occupation You Will Slave Your Life Over to:"
-        subheading = "What You missed Out On"
-        blah = readfile
-        job = sol()
-        occupations = dictionary
+        'pizza.html',                                       #the html file in templates/
+        foo = heading,                                      #will be used for heading
+        title = "Wheel Of Occupations (Imagine There's A Wheel):",                     #the title of our program
+        subheading0 = "Your Selection",                     #other title before randomly selected occupation
+        subheading1 = "What You Missed Out On",             #other title before list of occupations
+        job = sol(),                                        #randomly selected job
+        occupations = dictionary                            #jobs
     )
 app.debug = True
 app.run()
