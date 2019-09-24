@@ -11,28 +11,25 @@ from flask import Flask, render_template
 import csv
 import random
 
-file = open("occupations.csv","r")                          #open file with reading capabilities
-readfile = file.readlines()                                 #read each line and put them as a list of strings
-file = readfile.pop(0)                                      #pop off first line
-dictionary = {}                                             #instantiate the dictionary
-def sol():
-
+def genDict():
+    occupdict = {}                                          #instantiate occupdict as a dictionary
     total = 0;                                              #this will increase to show what ranges represent which occupations
-                                                            #   - to do the percentages we basically make zones with each occupation taking up a percentage of 99.8
-                                                            #   - so if the first percentage is 5.6 then for it to be selected, it needs to fall within 0 to 5.6
-                                                            #   - we then add 5.6 to total so for the next occupation, let's say it has a percentage of 6.1,
-                                                            #     we add 6.1 to the total to get the max number and now for this occupation, the range will be
-                                                            #     from 5.6 to 11.7
-    for line in file:                                       #for every line in file
-        idx = line.rfind(",")                               #find the index of the comma in each line
-        job = line[0:idx]                                   #assign the job var to the first part of the line which is a string (0 to index of comma excludes the comma)
-        percent = float(line[idx+1:-1])                     #assign the percent var to the second part of the list and makes it a float
-        dictionary[job] = round(percent + total,1);         #add the dictionary the occupation as the key and the sum of the total and percentage rounded to the ones decimal
-                                                            #   place
-        total += percent                                    #add the percentage to total
-    del dictionary["Total"]                                 #delete the last key since it is not needed and only shows the total
-    rand = random.randint(1,998) * 0.1                      #get a random integer from 0 toi 998 and then times it by 0.1 to make it a float that can be compared with the
-                                                            #   percentages
+    with open('occupations.csv') as occupations:
+        reader = csv.reader(occupations, delimiter=',')     #read in the file and break it up using ',' as the delimiter
+        line_count = 0                                      #define the line count
+        for row in reader:                                  #for each row do this
+            if line_count > 0 and row[0] != 'Total':        #if the line is not the first or last line do this
+                percentage = float(row[1])                  #convert the string percentage to a percentage
+                occupdict[row[0]] = round(percentage + total,1)  #add the occupation as the key and the percentage as the value to the dictionary occupdict
+                total += percentage                         #add the percentage to total
+            line_count += 1                                 #increase line count
+
+    return occupdict
+dictionary = genDict()                                       #instantiate the dictionary
+
+def sol():
+    rand = random.randint(1,998) * 0.1                      #get a random integer from 0 toi 998 and then times it by 0.1 to make it a float that can be
+                                                            #compared with the percentages
     for key in dictionary.keys():                           #for each of the keys in the dictionary
         if rand <= dictionary[key]:                         #if the random float generated is less than or equal to the percentage(value) attached to the job (key)
             return key;                                     #return the job(the key)
