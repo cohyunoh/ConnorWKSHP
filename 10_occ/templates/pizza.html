@@ -2,11 +2,34 @@
 <html>
     <head>
         <title><center>{{ foo }}</center></title>
+        <br>
         <title><center>{{ title }}</center></title>
     </head>
 
     <body>
-        <h1></h1>
+        <h1>{{ subheading0 }}</h1>
+        <br>
+        <h2>{{ job }}</h2>
+        <br>
+        <br>
+        <h1>{{ subheading1 }}</h1>
+        <br>
+        <table>
+          <tr>
+            <th>Occupation</th>
+            <th>Percentage</th>
+          </tr>
+          {%for key, value in occupations%}
+            <tr>
+              <td>{{ key|e }}</td>
+              <td>{{ value|e }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td>Total</td>
+            <td>99.8</td>
+          </tr>
+        </table>
     </body>
 
 </html>
