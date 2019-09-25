@@ -20,6 +20,7 @@ def foo():
 @app.route("/auth")
 def auth():
     print(request)
+    print(request.args)
     return "ok"
 
 app.run(debug = True)
