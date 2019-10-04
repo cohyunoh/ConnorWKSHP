@@ -6,10 +6,10 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import os
 app = Flask(__name__)
-
+app.secret_key = os.urandom(32)
 # username: hello
 # password: world
-app.secret_key = os.urandom(32)
+
 @app.route("/")
 def checkcookies():
     #print(request.cookies.get('username'))
@@ -34,11 +34,11 @@ def login():
     #print(request.form) #returns values in forms with POST method
     #print(request.form["username"]) #prints value in username
     #print(request.form["password"]) #prints value in password
-    session['user'] = request.form["username"]
-    session['pass'] = request.form["password"]
+    session['username'] = request.form["username"]
+    session['password'] = request.form["password"]
     #print(request.cookies.get('user'))
-    if (session['user'] == "hello"):
-        if (session['pass'] == "world"):
+    if (session['username'] == "hello"):
+        if (session['password'] == "world"):
             return redirect(url_for("welcome")) # redirects to welcome page
         else:
             return render_template(
