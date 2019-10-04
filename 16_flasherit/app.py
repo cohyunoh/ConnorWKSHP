@@ -61,6 +61,9 @@ def logout():                                               # route logs out the
     session.pop('password')
     return redirect(url_for("checkCookies"))                # redirect to beginning
 
+@app.route("/base")
+def base():
+    return render_template('base.html')
 if __name__ == "__main__":
     app.debug = True # Automatically updates project with save file
     app.run()

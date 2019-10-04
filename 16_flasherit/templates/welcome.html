@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang='en' dir='ltr'>
-  <head>
-    <meta charset='utf-8'>
-    <title> </title>
-  </head>
-  <body>
-    Welcome <br><br>
-    <form action='/logout', method="POST">
-        <input type = 'submit' name = 'logout' value = "Log Out">
-    </form>
+{% extends "base.html" %}
 
-
-      <br>
-  </body>
-</html>
+{% block body %}
+  Welcome travelor. Moonlight ah
+  <br>
+  <form action='/logout', method="POST">
+      <input type = 'submit' name = 'logout' value = "Log Out">
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock %}

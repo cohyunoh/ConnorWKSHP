@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang='en' dir='ltr'>
-  <head>
-    <meta charset='utf-8'>
-    <title> </title>
-  </head>
-  <body>
-    {{message}} <br><br>
-    <form action='/login', method="POST">
+{% extends "base.html" %}
 
-        Username: <br>
-        <input type = 'text' name = 'username' > <br> <br> <br>
-
-        Password: <br>
-        <input type = 'text' name = 'password' > <br> <br>
-
-        <input type = 'submit' name = 'sub1'>
-
-    </form>
-
-
+{% block body %}
+  {{messsage}}
+  <br>
+  <form action='/login', method="POST">
+      Username:
       <br>
-  </body>
-</html>
+      <input type = 'text' name = 'username' > <br> <br> <br>
+      Password:
+      <br>
+      <input type = 'text' name = 'password' > <br> <br>
+      <input type = 'submit' name = 'sub1'>
+      <br>
+      <br>
+      <br>
+  </form>
+{% endblock %}
