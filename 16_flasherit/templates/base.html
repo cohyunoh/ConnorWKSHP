@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang='en' dir='ltr'>
+  <head>
+    <meta charset='utf-8'>
+    <title>
+      {% block title %}
+        ||| TEAM IHJHW |||
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    {{message}} <br><br>
+    {% block body %}
+    {% endblock %}
+      <br>
+  </body>
+  <footer>
+    {% block footer %}
+      Sponsored By the Anti-JohnHomework Coalition
+    {% endblock %}
+  </footer>
+</html>
