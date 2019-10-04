@@ -12,17 +12,15 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def checkcookies():
-    #print(request.cookies.get('username'))
-    if("username" in session and "password" in session):
-        #print('no cookies found: going to login page')
-        if(session['username'] == "hello" and session['password'] == "world"):
-            return redirect(url_for("welcome"))
-    else:
-        #aprint('Cookies Found')
-        return render_template(
-            'login.html',
-            message = "Hello user! Please enter your username and password:"
-        )
+    if ("username" in session and "password" in session):
+        if (session['username'] == "hello"):
+            if (session['password'] == "world"):
+                return redirect(url_for("welcome")) # redirects to welcome page
+    #print('Cookies Not Found')
+    return render_template(
+        'login.html',
+        message = "Hello user! Please enter your username and password:"
+    )
 
 
 
@@ -36,7 +34,6 @@ def login():
     #print(request.form["password"]) #prints value in password
     session['username'] = request.form["username"]
     session['password'] = request.form["password"]
-    #print(request.cookies.get('user'))
     if (session['username'] == "hello"):
         if (session['password'] == "world"):
             return redirect(url_for("welcome")) # redirects to welcome page
@@ -57,6 +54,12 @@ def welcome():
     return render_template(
         "welcome.html"
     )
+
+@app.route("/logout", methods=["POST"])
+def logout():
+    session.pop('username')
+    session.pop('password')
+    return redirect(url_for("checkcookies"))
 
 if __name__ == "__main__":
     app.debug = True # Automatically updates project with save file
