@@ -12,12 +12,13 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 @app.route("/")
 def checkcookies():
-    print(request.cookies.get('username'))
-    if(session['user'] == "hello" && session['pass'] == "world"):
+    #print(request.cookies.get('username'))
+    if("username" in session and "password" in session):
         #print('no cookies found: going to login page')
-        return redirect(url_for("welcome"))
+        if(session['username'] == "hello" and session['password'] == "world"):
+            return redirect(url_for("welcome"))
     else:
-        print('Cookies Found')
+        #aprint('Cookies Found')
         return render_template(
             'login.html',
             message = "Hello user! Please enter your username and password:"
@@ -30,8 +31,6 @@ def login():
     #print(request.args) -> returns query string (GET method), which is empty because we use POST method
     #print(request.args["username"])
     #print(request.args["password"])
-
-
     #print(request.form) #returns values in forms with POST method
     #print(request.form["username"]) #prints value in username
     #print(request.form["password"]) #prints value in password
