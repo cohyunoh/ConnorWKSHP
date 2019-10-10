@@ -28,9 +28,9 @@ with open('data/students.csv') as csvfile:
         name = row['name']
         age = int(row['age'])
         id = int(row['id'])
-        command = "INSERT INTO STUDENTS VALUES({{name}}, {{age}}, {{id}})"
+        command = "INSERT INTO STUDENTS VALUES(" + name + "," + age "," + id + ")"
         c.execute(command)
 #==========================================================
 
-db.commit() #save changes
+# db.commit() #save changes
 db.close()  #close database
