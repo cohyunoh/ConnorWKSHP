@@ -16,21 +16,20 @@ c = db.cursor()               #facilitate db ops
 
 
 #==========================================================
-
-# < < < INSERT YOUR POPULATE-THE-DB CODE HERE > > >
-
-
 command = "CREATE TABLE STUDENTS (name TEXT, age INTEGER, id INTEGER)"          # test SQL stmt in sqlite3 shell, save as string
 c.execute(command)    # run SQL statement
 with open('data/students.csv') as csvfile:
     studentreader = csv.DictReader(csvfile)
+    rownum = 0
     for row in studentreader:
-        name = row['name']
-        age = int(row['age'])
-        id = int(row['id'])
-        command = "INSERT INTO STUDENTS VALUES(" + name + "," + age "," + id + ")"
+        #name = row['name']
+        #age = row['age']
+        #id = row['id']
+        command = "INSERT INTO STUDENTS VALUES(\"" + row['name'] + "\"" + ", " + row['age'] + ", " + row['id'] + ");"
+        #print(rownum)
+        #rownum += 1
         c.execute(command)
 #==========================================================
 
-# db.commit() #save changes
+db.commit() #save changes
 db.close()  #close database
