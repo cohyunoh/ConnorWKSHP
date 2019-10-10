@@ -1,4 +1,4 @@
-# Connor Oh & Sophie Nichol
+# Connor Oh & Sophie Nichol & Derek Leung TEAM Upside Down Gnomes
 # SoftDev1 pd09
 # K17 -- No Trouble
 # 2019-10-10
