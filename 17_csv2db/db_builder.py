@@ -47,5 +47,12 @@ with open('data/courses.csv') as csvfile:      # open csv file
         c.execute(command)
 #==========================================================
 
+#==========================================================
+q = "SELECT name, students.id, mark FROM students, courses WHERE students.id = courses.id" # Command works in terminal to display the course, the student id associated with the id in course and the mark the student recieved
+foo = c.execute(q)
+print foo       # prints "<sqlite3.Cursor object at 0x7f0a0bf213b0>"
+#==========================================================
+
+
 db.commit() #save changes
 db.close()  #close database
