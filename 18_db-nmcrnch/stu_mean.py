@@ -1,4 +1,4 @@
-# Connor Oh & Manfred Team
+# Connor Oh & Manfred Team CTs
 # SoftDev1 pd09
 # K18 -- No Trouble
 # 2019-10-15
