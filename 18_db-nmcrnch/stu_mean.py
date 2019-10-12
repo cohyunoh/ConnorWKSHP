@@ -14,7 +14,7 @@ c.execute(command)
 rows = c.fetchall()
 for row in rows:
     print(row)
-    command = "INSERT INTO AVERAGES VALUES(" + str(rows[1]) + "," + str(rows[2]) + ");"
+    command = "INSERT INTO AVERAGES VALUES(" + row[1] + ", " + row[2] + ");"
     c.execute(command)
 
 db.commit() #save changes
