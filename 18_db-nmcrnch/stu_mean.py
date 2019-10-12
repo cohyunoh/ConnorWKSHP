@@ -9,16 +9,11 @@ DB_FILE = "Talos.db"
 db = sqlite3.connect(DB_FILE) #opens existing file or it makes new one if it does not exit
 c = db.cursor()               #facilitate db ops
 
-command = "SELECT name, students.id, avg(mark)"
+command = "SELECT name, students.id, avg(mark) FROM students, courses WHERE students.id = courses.id GROUP BY name;"
 c.execute(command)
-command = "FROM students, courses"
-c.execute(command)
-command = "WHERE students.id = courses.id"
-c.execute(command)
-command = "GROUP BY name"
-c.execute(command)
-command = ";"
-c.execute(command)
+rows = c.fetchall()
+for row in rows:
+    print(row)
 
 db.commit() #save changes
 db.close()  #close database
