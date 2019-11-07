@@ -9,19 +9,24 @@
   <body>
 
     <h1>WELCOME</h1>
-    <div class="container-fluid">
-      A Guide Through Bootstrap By Connor Oh and Derek Leung
+    <div class="container-fluid p-3 mb-2 bg-dark text-white">
+
       <h2>Here's an Example of How Containers Work</h2>
+      <p> This whole page is in a conainer! Try adjusting your page dimensions and notice that the text will adjust to fit into your page </p>
       <!-- Using col-cm to show rows and columns -->
       <h4>These were done using a row class and a col-sm class for small columns</h4>
+      <small class="text-secondary">Press control and scroll with your mouse wheel to see the magic of columns</small>
+      <br>
+      <br>
+      <br>
       <div class="row">
-        <div class="col-sm">
+        <div class="col-sm text-primary">
           One of three columns
         </div>
-        <div class="col-sm">
+        <div class="col-sm text-success">
           One of three columns
         </div>
-        <div class="col-sm">
+        <div class="col-sm text-warning">
           One of three columns
         </div>
       </div>
@@ -189,13 +194,14 @@
       <h3>Better Looking Forms!</h3>
       <form>
         <div class="form-group">
-          <label for="formGroupExampleInput">Please enter something here:</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="I'm not a big fan of apples">
+          <label for="formGroupExampleInput">Is Derek Cool?:</label>
+          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Yes">
         </div>
         <div class="form-group">
-          <label for="formGroupExampleInput2">Also here:</label>
-          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="I really could use a klondike bar">
+          <label for="formGroupExampleInput2">Is Connor cool?:</label>
+          <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Also yes">
         </div>
+        <button type="button" class="btn btn-primary">Submit (only if both answers are yes)</button>
       </form>
       <br>
       <br>
@@ -221,6 +227,8 @@
         <br>
         <br>
         Aligned:
+        <br>
+        <small class="text-muted">Press control while scrolling your mouse wheel to see the magic of alignment</small>
       </p>
       <img src="images/horse.jpg" class="rounded float-left" alt="...">
       <img src="images/horse.jpg" class="rounded float-right" alt="...">
