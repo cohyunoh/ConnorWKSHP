@@ -1,4 +1,4 @@
-# Connor Oh
+# Connor Oh & Derek Leung Team: Odd Number Of Stairs
 # SoftDev1 PD 9
 # K24 -- A RESTful Journey Skyward
 # 2019-11-12
@@ -14,8 +14,8 @@ def hello_world():
     data = json.loads(content)
     print(displayedDesc)
     return render_template("bruh.html",
-                            pic = data["url"],
-                            desc = data["explanation"])
+                            description = data["explanation"],
+                            picture = data["url"])
 
 if __name__ == "__main__":
     app.debug = True
