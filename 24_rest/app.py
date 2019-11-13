@@ -12,7 +12,7 @@ def hello_world():
     urllink = urllib.request.urlopen("https://api.nasa.gov/planetary/apod?api_key=aSE5zbVk8IZbPt51EYgzq2itWhMyusUCKlu4KfQc")
     content = urllink.read()
     data = json.loads(content)
-    print(displayedDesc)
+    print(data)
     return render_template("bruh.html",
                             description = data["explanation"],
                             picture = data["url"])
