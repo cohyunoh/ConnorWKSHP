@@ -9,6 +9,7 @@ import json
 
 text1 = "Hello World!"
 text2 = "davis"
+text3 = "Connor, Derek"
 app = Flask(__name__)
 @app.route("/1")
 def something():
@@ -24,6 +25,22 @@ def something2():
     thing3 = json.loads(thing2)
     return render_template('bruh2.html', players = thing3['data'], entry = text2)
 
+@app.route("/3")
+def something3():
+    global text3
+    text = text3.replace(',', '').lower()
+    print(text)
+    textsplit = text.split()
+    print(textsplit)
+    print(text.replace(' ', '&name[]='))
+    if(len(textsplit) == 1):
+        thing = urllib2.urlopen("https://api.agify.io/?name={}".format(textsplit[0]))
+    else:
+        thing = urllib2.urlopen("https://api.agify.io/?name[]={}".format(text.replace(' ', '&name[]=')))
+    thing2 = thing.read()
+    thing3 = json.loads(thing2)
+    return render_template('bruh3.html', names = thing3)
+
 @app.route("/input")
 def authenticate():
     global text1
@@ -35,6 +52,12 @@ def authenticate2():
     global text2
     text2 = request.args["stuffthesequel"]
     return redirect("/2")
+
+@app.route("/input3")
+def authenticate3():
+    global text3
+    text3 = request.args["stuffthesequelsequel"]
+    return redirect("/3")
 if __name__ == "__main__":
   app.debug = True
   app.run()
