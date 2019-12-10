@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>API 3</title>
+  </head>
+  <body>
+    <h1>API:Agify.io</h1>
+    <br>
+    Easy to access data on what is the average age for people of a certain name
+    <br>
+    Enter a name or a list of names
+    <br>
+    examples of list: "michael mike" or "michael, mike"
+    <br>
+    <form action="/input3">
+        <input type = "text" name="stuffthesequelsequel">
+        <br>
+        <input type = "submit" name="sub">
+    </form>
+    <br><br>
+    <table>
+      <tr>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Count</td>
+      </tr>
+      {% for name in names %}
+        <tr>
+          <td>{{name['name']}}</td>
+          <td>{{name['age']}}</td>
+          <td>{{name['count']}}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
