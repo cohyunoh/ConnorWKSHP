@@ -1,4 +1,4 @@
-var fib = function(n){
+var fibonacci = function(n){
   if(n==1) return 1;
   else if (n==2) return 1;
   else return (fib(n-2) + fib(n-1));
@@ -14,9 +14,17 @@ var min = function(x,y){
   else return x;
 };
 
-var gcd = function(x,y){
-  m = max(x,y);
-  n = min(x,y);
+var gcd = function(a,b){
+  m = max(a,b);
+  n = min(a,b);
   if (m % n == 0) return n;
   else return gcd(n, m%n);
+};
+
+var list = ["connor", "leia", "grace", "jude"];
+
+var randomStudent = function(){
+  len = list.length;
+  index = Math.floor(Math.random() * len);
+  return list[index];
 };
