@@ -32,12 +32,29 @@ var randomStudent = function(){
   index = Math.floor(Math.random() * len);
   return list[index];
 };
-
+var ans1 = fib(30);
+var ans2 = gcd(1220,516);
+var ans3 = randomStudent();
 var fibonnacci = document.getElementById("f");
-fibonnacci.addEventListener("click", console.log(fib(30)));
+fibonnacci.addEventListener("click", function(){
+  console.log(ans1)
+});
+fibonnacci.addEventListener("click", function(){
+  document.getElementById("ans1").innerHTML = ans1;
+});
 
 var greatestcommondenominator = document.getElementById("g");
-greatestcommondenominator.addEventListener("click", console.log(gcd(1220, 516)));
+greatestcommondenominator.addEventListener("click", function(){
+  console.log(ans2)
+});
+greatestcommondenominator.addEventListener("click", function(){
+    document.getElementById("ans2").innerHTML = ans2;
+});
 
 var rand = document.getElementById("r");
-rand.addEventListener("click", console.log(randomStudent()));
+rand.addEventListener("click", function(){
+  console.log(ans3)
+});
+rand.addEventListener("click", function(){
+  document.getElementById("ans3").innerHTML = ans3;
+});
