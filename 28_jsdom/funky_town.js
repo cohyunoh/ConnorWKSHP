@@ -34,7 +34,7 @@ var randomStudent = function(){
 };
 
 var fibonnacci = document.getElementById("f");
-fibonnacci.addEventListener("click", console.log(fib(10)));
+fibonnacci.addEventListener("click", console.log(fib(30)));
 
 var greatestcommondenominator = document.getElementById("g");
 greatestcommondenominator.addEventListener("click", console.log(gcd(1220, 516)));
