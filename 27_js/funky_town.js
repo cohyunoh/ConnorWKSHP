@@ -2,7 +2,7 @@
 // SoftDev1 pd9
 // K#27 -- Sequential Progression
 // 2019-12-11
-var fibonacci = function(n){
+var fib = function(n){
   if(n==1) return 1;
   else if (n==2) return 1;
   else return (fib(n-2) + fib(n-1));
