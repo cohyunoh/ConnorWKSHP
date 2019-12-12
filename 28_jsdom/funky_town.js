@@ -34,10 +34,10 @@ var randomStudent = function(){
 };
 
 var fibonnacci = document.getElementById("f");
-fibonnacci.addEventListener('click', fib(100));
+fibonnacci.addEventListener('click', console.log(fib(100)));
 
 var greatestcommondenominator = document.getElementById("g");
-greatestcommondenominator.addEventListener('click', gcd(1220, 516));
+greatestcommondenominator.addEventListener('click', console.log(gcd(1220, 516)));
 
 var rand = document.getElementById("r");
-rand.addEventListener('click', randomStudent());
+rand.addEventListener('click', console.log(randomStudent()));
