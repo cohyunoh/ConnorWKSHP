@@ -1,4 +1,4 @@
-// Connor Oh and Jude Rizzo
+// Connor Oh and Leia Park
 // SoftDev1 pd9
 // K#28 -- Sequential Progression II: Electric Boogaloo
 // 2019-12-12
@@ -34,10 +34,10 @@ var randomStudent = function(){
 };
 
 var fibonnacci = document.getElementById("f");
-fibonnacci.addEventListener('click', console.log(fib(100)));
+fibonnacci.addEventListener("click", console.log(fib(10)));
 
 var greatestcommondenominator = document.getElementById("g");
-greatestcommondenominator.addEventListener('click', console.log(gcd(1220, 516)));
+greatestcommondenominator.addEventListener("click", console.log(gcd(1220, 516)));
 
 var rand = document.getElementById("r");
-rand.addEventListener('click', console.log(randomStudent()));
+rand.addEventListener("click", console.log(randomStudent()));
