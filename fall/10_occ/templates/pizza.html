@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>OccupationGenerator</title>
+      <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+      </style>
+    </head>
+
+    <body>
+        <h1><center>{{ foo }}</center><h1>
+        <br>
+        <h1><center>{{ title }}</center></h1>
+        <br>
+        <center>
+        <h1>{{ subheading0 }}</h1>
+        <br>
+        <h2>{{ job }}</h2>
+        <br>
+        <br>
+        <h1>{{ subheading1 }}</h1>
+        <br>
+
+        <table style="width:100%">
+          <tr>
+            <th>Occupation</th>
+            <th>Percentage</th>
+          </tr>
+          {%for key, value in occupations.items()%}
+            <tr>
+              <td>{{ key|e }}</td>
+              <td>{{ value|e }}</td>
+            </tr>
+          {% endfor %}
+          <tr>
+            <td>Total</td>
+            <td>99.8</td>
+          </tr>
+        </table>
+        </center>
+    </body>
+
+</html>
