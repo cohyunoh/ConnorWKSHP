@@ -1,3 +1,7 @@
+//Connor Oh, Sophie Nichol TopHats
+//SoftDev1 pd9
+//K#04 -- I See a Red Door...
+//2020-02-06
 
 // true is rectangle
 var drawType = true;
