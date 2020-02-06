@@ -1,4 +1,3 @@
-var togglebutton = document.getElementById("toggle");
 
 // true is rectangle
 var drawType = true;
@@ -13,5 +12,6 @@ var toggle = function(e){
     drawType = true;
     text.innerHTML = "Rectangle";
   }
-
-togglebutton.addEventListener('click', toggle)
+}
+var togglebutton = document.getElementById('toggle');
+togglebutton.addEventListener('click', toggle);
