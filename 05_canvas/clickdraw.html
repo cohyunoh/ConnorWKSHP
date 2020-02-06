@@ -1,22 +1,27 @@
-<html>
-
+<!DOCTYPE HTML>
+<html lang = "en">
 <head>
-        <meta charset="utf-8"/>
-        <title>Clickdraw</title>
-    </head>
-		<style>
-			#slate {border: 1px solid black }
-		</style>
-<body>
-	<div>
-	  <canvas height="300" width="300" id="slate">
-	    hi
-	  </canvas>
-	</div>
-	<p id="toggletext"> Rectangle </p>
-	<button id="toggle">Toggle Rectangle/Dot</button>
-	<br>
-	<button id="clear">Clear</button>
-</body>
+	<style>
+		#slate {border: 1px solid black }
+	</style>
+  <!-- basic.html -->
+  <title>ClickDrawx</title>
+  <h1>Welcome</h1>
+  <meta charset = "UTF-8" />
+</head>
 <script src="clickdraw.js"></script>
-</html>
+<body onload="setup()">
+	<button type="button" onclick="clearCanvas()">clear canvas</button>
+	<!-- <button type="button" onclick="makeRect()">draw rect</button> -->
+	<br>
+	<select id="mode">
+		<option value="rect">Rectangle Mode</option>
+		<option value="dot">Dot Mode</option>
+		<option value="line">Line Mode</option>
+	</select>
+	<div>
+		<canvas height="600" width="600" id="slate">
+			Fallback text
+		</canvas>
+	</div>
+</body>

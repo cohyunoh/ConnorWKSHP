@@ -45,8 +45,10 @@ function setup() {
 
 				if (mode == "dot") {
 					ctx.fillStyle = "#FF0000";
-					ctx.fillRect(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop, 3,3)
-				} else if (mode == "rect"){
+          ctx.beginPath();
+					ctx.arc(e.clientX - canvas.offsetLeft - 2.5, e.clientY - canvas.offsetTop - 2.5, 5, 0, 2 * Math.PI);
+          ctx.fill();
+        } else if (mode == "rect"){
 					startX = e.clientX - canvas.offsetLeft;
 					prevX = e.clientX - canvas.offsetLeft;
 					startY = e.clientY - canvas.offsetTop;
