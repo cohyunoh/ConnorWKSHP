@@ -1,11 +1,12 @@
-function makeRect() {
+function makeRect() { //makes rectangle test
 	ctx.fillRect( 50, 50, 100, 200);
 }
 
-function clearCanvas() {
+function clearCanvas() { //clears the canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+//=============GLOBAL VARIABLES=============================
 var canvas, ctx,
 	mousePoint = false,
     prevX = 0,
@@ -16,22 +17,24 @@ var canvas, ctx,
 var mode = "";
 var startX, startY = 0;
 var mousedown = false;
+//==========================================================
 
+// sets up the canvas to get all the elements, the mode, the locations, based on user preference
 function setup() {
     canvas = document.getElementById('slate');
     ctx = canvas.getContext("2d");
 		mode = document.getElementById("mode").value;
 
     canvas.addEventListener("mousemove", function (e) {
-
+      // if line
 				if (mode == "line") {
 					ctx.fillstyle = "#5799EC";
-					findxy('move', e);
-				} else if (mode == "rect" && mousedown) {
+					findxy('move', e); //draws the actual line
+				} else if (mode == "rect" && mousedown) { //when mouse moves and is rectangle and user is holding down click, then it draws the rectangle
 					ctx.fillStyle = "#DFB3EA";
-					console.log("making rect. start: "+startX+", "+startY);
-					ctx.clearRect(startX, startY, prevX-startX, prevY-startY);
-					prevX = e.clientX - canvas.offsetLeft;
+					console.log("making rect. start: "+startX+", "+startY); //debug purposes
+					ctx.clearRect(startX, startY, prevX-startX, prevY-startY);  //this clears the area behind the rectangle
+					prevX = e.clientX - canvas.offsetLeft; //offset gives the coordinates of the canvas so the mouse can start its coordinates at far left or top, etc.
 					prevY = e.clientY - canvas.offsetTop;
 					ctx.fillRect(startX, startY, prevX-startX, prevY-startY);
 					console.log("width: " + (prevX-startX).toString())
@@ -45,7 +48,7 @@ function setup() {
 
 				if (mode == "dot") {
 					ctx.fillStyle = "#FF0000";
-          ctx.beginPath();
+          ctx.beginPath(); //this begins the path for the arc to draw
 					ctx.arc(e.clientX - canvas.offsetLeft - 2.5, e.clientY - canvas.offsetTop - 2.5, 5, 0, 2 * Math.PI);
           ctx.fill();
         } else if (mode == "rect"){
