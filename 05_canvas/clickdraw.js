@@ -1,3 +1,7 @@
+//Connor Oh and Leia Park
+//SoftDev1 pd9
+//K05 -- ...and I want to Paint It Better
+//2020-02-06
 function makeRect() { //makes rectangle test
 	ctx.fillRect( 50, 50, 100, 200);
 }
