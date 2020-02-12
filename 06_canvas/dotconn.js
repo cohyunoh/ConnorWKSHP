@@ -1,6 +1,8 @@
 
 
 var startPath = true;
+var xcoord = null;
+var ycoord = null;
 
 var clearCanvas = function(e){ //clears the canvas
   var c = document.getElementById('playground');
