@@ -54,6 +54,7 @@ var animateCircle = function(e){
     window.requestAnimationFrame(circle); //calls the function recursively
     animateCirclepls = true; //sets the boolean true
     animateSaverpls = false; //sets the boolean false
+    radius = 0;
     window.cancelAnimationFrame(requestS);
   }
 };
@@ -67,6 +68,10 @@ var animateSaver = function(e){
     window.requestAnimationFrame(bounce); //calls the function recursively
     animateCirclepls = false; //sets the boolean false
     animateSaverpls = true; //sets the boolean true
+    x = 300;
+    y = 300;
+    dx = Math.floor(Math.random() * Math.floor(3)) + 1;
+    dy = Math.floor(Math.random() * Math.floor(3)) + 1;
     window.cancelAnimationFrame(requestC);
   }
 };
