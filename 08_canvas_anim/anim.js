@@ -1,7 +1,7 @@
 //Connor Oh
 //Softdev1 pd9
-//K07 -- They lock us in the tower whenever we get caught
-//2020-02-13
+//K08 -- They What is it saving the screen from?
+//2020-02-14
 
 //Global Variables
 var radius = 0; //radius of circle
