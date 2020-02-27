@@ -1,3 +1,7 @@
+#Leia Park & Connor Oh
+#SoftDev1 pd9
+#K09 -- Yummy Mongo Py
+#2020-02-28
 from bson.json_util import loads
 from pymongo import MongoClient
 
@@ -15,11 +19,13 @@ def getBorough(borough):
      data = collection.find({"borough": borough})
      for item in data:
         for key, value in item.items():
-            if key == "name":
+            if key == "name":for item in data:
+          return item
                 print("{name: %s}" % value)
 
 
-# Specified zip code
+# Specified zip codefor item in data:
+          return item
 def getZipCode(zipcode):
      data = collection.find({"address.zipcode": zipcode})
      for item in data:
