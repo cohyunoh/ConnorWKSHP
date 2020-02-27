@@ -3,8 +3,13 @@ from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
 db = client['test']
-collection = db['restaurants']
-
+collection = db.restaurants #creates a collection for the restaurants
+#read in data============================
+if(collection.count()==0):
+    file = open("primer-dataset.json", "r")
+    content = file.readlines()
+    for line in content:
+        collection.insert_one(loads(line))
 # Specified borough
 def getBorough(borough):
      data = collection.find({"borough": borough})
