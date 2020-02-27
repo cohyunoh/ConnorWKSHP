@@ -12,7 +12,11 @@ if(collection.count()==0):
         collection.insert_one(loads(line))
 # Specified borough
 def getBorough(borough):
-     return collection.find({"borough": borough})
+     data = collection.find({"borough": borough})
+     for item in data:
+        for key, value in data.items():
+            if key == "name":
+                print("{name: %s}" % value)
 
 
 # Specified zip code
