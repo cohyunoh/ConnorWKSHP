@@ -19,8 +19,7 @@ def getBorough(borough):
      data = collection.find({"borough": borough})
      for item in data:
         for key, value in item.items():
-            if key == "name":for item in data:
-          return item
+            if key == "name":
                 print("{name: %s}" % value)
 
 
