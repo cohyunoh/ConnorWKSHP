@@ -57,4 +57,4 @@ def getCuisine(cuisine):
             if key == "name":
                 print("{name: %s}" % value)
 
-print(getBorough("Queens"))
+print(getZipCode("11357"))
