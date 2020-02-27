@@ -14,7 +14,7 @@ if(collection.count()==0):
 def getBorough(borough):
      data = collection.find({"borough": borough})
      for item in data:
-        for key, value in data.items():
+        for key, value in item.items():
             if key == "name":
                 print("{name: %s}" % value)
 
