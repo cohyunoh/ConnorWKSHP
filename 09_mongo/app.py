@@ -41,7 +41,7 @@ def getZipGrade(zipcode, grade):
 
 # Specified zip code w/ score below a threshold
 def getZipScore(zipcode, score):
-     data = collection.find({"address.zipcode": zipcode, "grades.0.grade": {"$lt": score}})
+     data = collection.find({"address.zipcode": zipcode, "grades.0.score": {"$lte": score}})
      for item in data:
         for key, value in item.items():
             if key == "name":
