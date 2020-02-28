@@ -58,5 +58,5 @@ def getCuisine(cuisine):
 #getBorough("Queens")
 #getZipGrade("11357", "A")
 #getZipCode("11357")
-#getZipScore("11357", "100")
+#getZipScore("11357", "9")
 #getCuisine("hamburger")
