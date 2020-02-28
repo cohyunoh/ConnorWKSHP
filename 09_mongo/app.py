@@ -48,8 +48,8 @@ def getZipScore(zipcode, score):
                 print("{name: %s}" % value)
 
 # Something more clever
-def getCuisine(cuisine):
-     data = collection.find({"cuisine": cuisine})
+def getZipCuisine(zipcode, cuisine):
+     data = collection.find({"address.zipcode": zipcode, "cuisine": cuisine})
      for item in data:
         for key, value in item.items():
             if key == "name":
