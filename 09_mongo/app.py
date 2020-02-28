@@ -24,7 +24,6 @@ def getBorough(borough):
 
 
 # Specified zip codefor item in data:
-          return item
 def getZipCode(zipcode):
      data = collection.find({"address.zipcode": zipcode})
      for item in data:
@@ -56,4 +55,4 @@ def getCuisine(cuisine):
             if key == "name":
                 print("{name: %s}" % value)
 
-print(getZipCode("11357"))
+getZipCode("11357")
