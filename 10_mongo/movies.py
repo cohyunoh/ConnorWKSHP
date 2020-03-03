@@ -3,6 +3,8 @@
 #K10 -- Import/Export Bank
 #2020-03-04
 
+from bson.json_util import loads
+from pymongo import MongoClient
 
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
@@ -13,4 +15,8 @@ def moviesFromTo(start, end):
                print("{title: %s}" % value)
 
 def moviesThisActorIn(name):
-    data = movies.find("cast" : )
+    data = movies.find("cast" : {"$in": name})
+    for movie in data:
+       for key, value in movie.items():
+           if key == "title":
+               print("{title: %s}" % value)
