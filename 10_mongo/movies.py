@@ -14,8 +14,17 @@ def moviesFromTo(start, end):
            if key == "title":
                print("{title: %s}" % value)
 
+#displays all the movies a certain actor/actress was in
 def moviesThisPerformerIn(name):
     data = movies.find("cast" : {"$in": name})
+    for movie in data:
+       for key, value in movie.items():
+           if key == "title":
+               print("{title: %s}" % value)
+
+#displays all the movies with in this genre
+def moviesInThisGenre(genre):
+    data = movies.find("genre" : {"$in": genre})
     for movie in data:
        for key, value in movie.items():
            if key == "title":
