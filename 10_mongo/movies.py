@@ -8,6 +8,7 @@ from pymongo import MongoClient
 
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
+    """prints all the movies from the years in the interval [start, end]"""
     data = movies.find("year" : {"$and" : [{"$gte" : start}, {"$lte" : end}]})
     for movie in data:
        for key, value in movie.items():
@@ -16,6 +17,7 @@ def moviesFromTo(start, end):
 
 #displays all the movies a certain actor/actress was in
 def moviesThisPerformerIn(name):
+    """prints all the movies that includes the performer with [name] in its cast"""
     data = movies.find("cast" : {"$in": name})
     for movie in data:
        for key, value in movie.items():
@@ -24,6 +26,7 @@ def moviesThisPerformerIn(name):
 
 #displays all the movies with in this genre
 def moviesInThisGenre(genre):
+    """prints all the movies with [genre] in its list of genres"""
     data = movies.find("genre" : {"$in": genre})
     for movie in data:
        for key, value in movie.items():
