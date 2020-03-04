@@ -19,7 +19,7 @@ if(movies.count()==0):
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
     """prints all the movies from the years in the interval [start, end]"""
-    data = movies.find({"year": [{"$gte": start}, {"$lte": end}]})
+    data = movies.find({"year": {"$and": [{"$gte": start}, {"$lte": end}]}})
     for movie in data:
        for key, value in movie.items():
            if key == "title":
