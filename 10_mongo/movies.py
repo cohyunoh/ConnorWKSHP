@@ -3,7 +3,7 @@
 #K10 -- Import/Export Bank
 #2020-03-04
 
-from bson.json_util import loads
+from json import loads
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
