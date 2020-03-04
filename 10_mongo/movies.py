@@ -13,7 +13,8 @@ if(movies.count()==0):
     with open('movies.json') as file:
         data = file.read() #convert file to str
         for item in data:
-            movies.insert_one(json.loads(item))
+            item = json.loads(item)
+            movies.insert_one(item)
 #print(movies)
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
