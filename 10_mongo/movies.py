@@ -3,7 +3,7 @@
 #K10 -- Import/Export Bank
 #2020-03-04
 
-from json import loads
+from bson.json_util import loads
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
@@ -14,7 +14,7 @@ if(movies.count()==0):
     file = open("movies.json", "r")
     content = file.readlines()
     for line in content:
-        movies.insert_one(loads(line))
+        movies.insert_many(loads(line))
 
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
