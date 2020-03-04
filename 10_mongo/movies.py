@@ -7,7 +7,7 @@ from bson.json_util import loads
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
-db = client['TobyTop40']
+db = client['tobytop40']
 movies = db.movies #creates a collection for the movies
 
 if(movies.count()==0):
