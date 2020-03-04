@@ -6,6 +6,16 @@
 from bson.json_util import loads
 from pymongo import MongoClient
 
+client = MongoClient('localhost', 27017)
+db = client['TobyTop40']
+movies = db.movies #creates a collection for the movies
+
+if(movies.count()==0):
+    file = open("primer-dataset.json", "r")
+    content = file.readlines()
+    for line in content:
+        movies.insert_one(loads(line))
+
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
     """prints all the movies from the years in the interval [start, end]"""
