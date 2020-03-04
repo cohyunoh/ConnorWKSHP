@@ -3,16 +3,17 @@
 #K10 -- Import/Export Bank
 #2020-03-04
 
-import json 
+import json
 from pymongo import MongoClient
 
-client = MongoClient('localhost', 27017)
-movies = client.tobytop40.movies
-movies.drop()
-file = open("movies.json", "r")
-content = json.load(file)
-for line in content:
-    movies.insert_one(line)
+client = MongoClient()
+db = client.tobytop40
+movies = db.movies
+if(movies.count()==0):
+    with open('movies.json') as file:
+        data = file.read() #convert file to str
+        for item in data:
+            movies.insert_one(json.loads(item))
 #print(movies)
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
