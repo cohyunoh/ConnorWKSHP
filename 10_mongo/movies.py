@@ -15,7 +15,7 @@ if(movies.count()==0):
     content = file.readlines()
     for line in content:
         movies.insert_many(loads(line))
-
+print(movies)
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
     """prints all the movies from the years in the interval [start, end]"""
