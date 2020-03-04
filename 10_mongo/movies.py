@@ -12,6 +12,7 @@ movies = db.movies
 if(movies.count()==0):
     with open('movies.json') as file:
         data = file.read() #convert file to str
+        data = data[1:-1]
         for item in data:
             item = json.loads(item)
             movies.insert_one(item)
