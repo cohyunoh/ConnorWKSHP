@@ -42,3 +42,7 @@ def moviesInThisGenre(genre):
        for key, value in movie.items():
            if key == "title":
                print("{title: %s}" % value)
+
+moviesFromTo(2018,2019)
+#moviesThisPerformerIn("Tom Cruise")
+#moviesInThisGenre("Comedy")
