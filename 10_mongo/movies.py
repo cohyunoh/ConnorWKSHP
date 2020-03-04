@@ -3,19 +3,17 @@
 #K10 -- Import/Export Bank
 #2020-03-04
 
-from bson.json_util import loads
+from json import loads
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
-db = client['tobytop40']
-movies = db.movies #creates a collection for the movies
-
-if(movies.count()==0):
-    file = open("movies.json", "r")
-    content = file.readlines()
-    for line in content:
-        movies.insert_many(loads(line))
-print(movies)
+movies = client.tobytop40.movies
+movies.drop()
+file = open("movies.json", "r")
+content = json.load(file)
+for line in content:
+    movies.insert_one(line)
+#print(movies)
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
     """prints all the movies from the years in the interval [start, end]"""
@@ -43,6 +41,6 @@ def moviesInThisGenre(genre):
            if key == "title":
                print("{title: %s}" % value)
 
-moviesFromTo(2018,2019)
+#moviesFromTo(2018,2019)
 #moviesThisPerformerIn("Tom Cruise")
 #moviesInThisGenre("Comedy")
