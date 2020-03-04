@@ -11,7 +11,7 @@ db = client['TobyTop40']
 movies = db.movies #creates a collection for the movies
 
 if(movies.count()==0):
-    file = open("primer-dataset.json", "r")
+    file = open("movies.json", "r")
     content = file.readlines()
     for line in content:
         movies.insert_one(loads(line))
