@@ -26,7 +26,7 @@ def moviesFromTo(start, end):
     for movie in data:
        for key, value in movie.items():
            if key == "title":
-               list.append("{title: %s}" % value)
+               list.append(value)
     return list
 #displays all the movies a certain actor/actress was in
 def moviesThisPerformerIn(name):
@@ -36,7 +36,7 @@ def moviesThisPerformerIn(name):
     for movie in data:
        for key, value in movie.items():
            if key == "title":
-               list.append("{title: %s}" % value)
+               list.append(value)
     return list
 #displays all the movies with in this genre
 def moviesInThisGenre(genre):
@@ -46,7 +46,7 @@ def moviesInThisGenre(genre):
     for movie in data:
        for key, value in movie.items():
            if key == "title":
-              list.append("{title: %s}" % value)
+              list.append(value)
     return list
 #print(moviesFromTo(2000,2001))
 #moviesThisPerformerIn("Tom Cruise")
