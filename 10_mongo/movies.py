@@ -6,21 +6,22 @@
 import json
 from pymongo import MongoClient
 
+"""
+Wikipedia Movie Data, by Peter Rust
+This dataset contains information about a great number of American-made movies, including their title,genre,year,cast, and more
+raw data can be found at: https://raw.githubusercontent.com/prust/wikipedia-movie-data/master/movies.json
+
+As can be found in a separate file, load_mongojson.py, our import mechanism can take any json file as its second argument, and employs json.loads to convert the data into a python dictionary and in turn load the data into the locally running MongoDB server, in the database TobyTop40 and the collection 'movies'
+"""
+
 client = MongoClient()
-db = client.tobytop40
+db = client.TobyTop40
 movies = db.movies
-if(movies.count()==0):
-    with open('movies.json') as file:
-        data = file.read() #convert file to str
-        data = data[1:-1]
-        for item in data:
-            item = json.loads(item)
-            movies.insert_one(item)
-#print(movies)
+
 #dislays all movies from a certain time range
 def moviesFromTo(start, end):
     """prints all the movies from the years in the interval [start, end]"""
-    data = movies.find({"year": {"$and": [{"$gte": start}, {"$lte": end}]}})
+    data = movies.find({"year": {"$gte": start, "$lte": end}})
     for movie in data:
        for key, value in movie.items():
            if key == "title":
@@ -29,7 +30,7 @@ def moviesFromTo(start, end):
 #displays all the movies a certain actor/actress was in
 def moviesThisPerformerIn(name):
     """prints all the movies that includes the performer with [name] in its cast"""
-    data = movies.find({"cast": {"$in": name}})
+    data = movies.find({"cast": {"$in": [ name ] } } )
     for movie in data:
        for key, value in movie.items():
            if key == "title":
@@ -38,12 +39,27 @@ def moviesThisPerformerIn(name):
 #displays all the movies with in this genre
 def moviesInThisGenre(genre):
     """prints all the movies with [genre] in its list of genres"""
-    data = movies.find({"genre": {"$in": genre}})
+    data = movies.find({"genres": {"$in": [genre] } })
     for movie in data:
        for key, value in movie.items():
            if key == "title":
                print("{title: %s}" % value)
 
-#moviesFromTo(2018,2019)
+#moviesFromTo(2000,2001)
 #moviesThisPerformerIn("Tom Cruise")
-#moviesInThisGenre("Comedy")
+#moviesInThisGenre("Horror")
+
+requested_command = input("what would you like to search for? [year,performer,genre]: ")
+if requested_command == "year":
+    print("you requested: movies in a time interval")
+    startyear = int(input("start year: "))
+    endyear = int(input("end year: "))
+    moviesFromTo(startyear,endyear)
+elif requested_command == "performer":
+    print("you requested: movies including a specified performer")
+    name = input("performer name: ")
+    moviesThisPerformerIn(name)
+elif requested_command == "genre":
+    print("you requested: movies in a specific genre")
+    genre = input("genre: ")
+    moviesInThisGenre(genre)
