@@ -12,26 +12,28 @@
       <p>End Year: <input type = "text" name = "end"> </p>
       <input type = "submit" name = "subyear" value="years">
     </form>
-    <p>
-      {% for movie in yearsmovie %}
-      <p>{{movie}}</p>
-      {% endfor %}
-    </p>
+
     <h5>All the Movies this Star was in</h5>
     <form  action="/name" method="POST">
       <p>Actor's Name: <input type = "text" name = "name"> </p>
       <input type = "submit" name = "subname" value="names">
     </form>
-    <p>
-      {% for movie in namemovie %}
-      <p>{{movie}}</p>
-      {% endfor %}
-    </p>
+
     <h5>All the Movies in this Genre</h5>
     <form  action="/genre" method="POST">
       <p>Genre: <input type = "text" name = "genre"> </p>
       <input type = "submit" name = "subgenre" value="genres">
     </form>
+    <p>
+      {% for movie in yearsmovie %}
+      <p>{{movie}}</p>
+      {% endfor %}
+    </p>
+    <p>
+      {% for movie in namemovie %}
+      <p>{{movie}}</p>
+      {% endfor %}
+    </p>
     <p>
       {% for movie in genremovie %}
       <p>{{movie}}</p>

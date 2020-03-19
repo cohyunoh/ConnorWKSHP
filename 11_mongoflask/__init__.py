@@ -1,3 +1,7 @@
+#Connor Oh & Benjamin Avrahami -- TEAM Socks
+#SoftDev2 -- pd9
+#K11 -- Ay Mon Go Git It From Yer Flask
+#2020-03-19
 from flask import Flask, render_template, request, session, redirect, url_for
 from utl import movies
 import os
