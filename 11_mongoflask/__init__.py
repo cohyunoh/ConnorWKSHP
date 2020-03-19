@@ -5,7 +5,7 @@ from json import loads
 from pymongo import MongoClient
 from sys import argv
 
-FILENAME = "movies.json"
+FILENAME = "utl/movies.json"
 
 client = MongoClient()
 db = client.TobyTop40
