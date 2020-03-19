@@ -15,7 +15,7 @@ As can be found in a separate file, load_mongojson.py, our import mechanism can 
 """
 
 client = MongoClient()
-db = client.TobyTop40
+db = client.Socks
 movies = db.movies
 
 #dislays all movies from a certain time range
