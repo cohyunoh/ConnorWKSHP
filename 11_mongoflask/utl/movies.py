@@ -22,12 +22,11 @@ movies = db.movies
 def moviesFromTo(start, end):
     """prints all the movies from the years in the interval [start, end]"""
     data = movies.find({"year": {"$gte": start, "$lte": end}})
-    list = ""
+    list = []
     for movie in data:
        for key, value in movie.items():
            if key == "title":
-               list += ("{title: %s}" % value)
-               list += "\n"
+               list.append("{title: %s}" % value)
     return list
 #displays all the movies a certain actor/actress was in
 def moviesThisPerformerIn(name):
@@ -51,7 +50,7 @@ def moviesInThisGenre(genre):
               list += ("{title: %s}" % value)
               list += "\n"
     return list
-#moviesFromTo(2000,2001)
+print(moviesFromTo(2000,2001))
 #moviesThisPerformerIn("Tom Cruise")
 #moviesInThisGenre("Horror")
 
