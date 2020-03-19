@@ -34,4 +34,4 @@ def genre():
     return redirect(url_for('movie'))
 if __name__ == "__main__":
     app.debug = True
-    app.run()
+    app.run(host='0.0.0.0')
