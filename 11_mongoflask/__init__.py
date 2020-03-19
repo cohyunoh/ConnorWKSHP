@@ -6,13 +6,13 @@ from bson.json_util import loads
 
 client = pymongo.MongoClient('localhost', 27017) # port 27017
 db = client['Socks']
-movies = db['movies']
+films = db['movies']
 
-if movies.count() == 0:
+if films.count() == 0:
     with open('utl/movies.json','r') as jsonfile:
         data = jsonfile.read()
         content = loads(data)
-        movies.insert(content)
+        films.insert(content)
 
 app = Flask(__name__) #create instance of class Flask
 app.secret_key = os.urandom(32) #generates a secret key for session to start
