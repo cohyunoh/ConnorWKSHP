@@ -7,11 +7,30 @@
   <body>
     <h1>Welcome to My Mongo Movie Site</h1>
     <h5>All the Movies from Start Year to End Year</h5>
-    <p>Start Year:</p>
-    <form  action="/" method="POST">
+    <form  action="/year" method="POST">
       <p>Start Year: <input type = "text" name = "start"> </p>
       <p>End Year: <input type = "text" name = "end"> </p>
-      <input type = "submit" name = "sub" value="login">
+      <input type = "submit" name = "subyear" value="years">
     </form>
+    <p>{{yearsmovie}}</p>
+    <h5>All the Movies from Start Year to End Year</h5>
+    <form  action="/year" method="POST">
+      <p>Start Year: <input type = "text" name = "start"> </p>
+      <p>End Year: <input type = "text" name = "end"> </p>
+      <input type = "submit" name = "subyear" value="years">
+    </form>
+    <p>{{yearsmovie}}</p>
+    <h5>All the Movies this Star was in</h5>
+    <form  action="/name" method="POST">
+      <p>Actor's Name: <input type = "text" name = "name"> </p>
+      <input type = "submit" name = "subname" value="names">
+    </form>
+    <p>{{namemovie}}</p>
+    <h5>All the Movies in this Genre</h5>
+    <form  action="/genre" method="POST">
+      <p>Genre: <input type = "text" name = "genre"> </p>
+      <input type = "submit" name = "subgenre" value="genres">
+    </form>
+    <p>{{genremovie}}</p>
   </body>
 </html>
