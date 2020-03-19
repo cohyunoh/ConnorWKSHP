@@ -19,14 +19,14 @@ def year():
         return render_template('index.html', yearsmovie = movies)
     return redirect(url_for('movie'))
 @app.route("/name", methods=["POST"])
-def year():
+def name():
     if (session):
         name = session['name']
         movies = movies.moviesThisPerformerIn(name)
         return render_template('index.html', namemovie = movies)
     return redirect(url_for('movie'))
 @app.route("/genre", methods=["POST"])
-def year():
+def genre():
     if (session):
         genre = session['genre']
         movies = movies.moviesInThisGenre(genre)
