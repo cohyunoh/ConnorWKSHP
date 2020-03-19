@@ -12,26 +12,20 @@ def movie():
 
 @app.route("/year", methods=["POST"])
 def year():
-    if (session):
-        startyear = session['start']
-        endyear = session['end']
-        movies = movies.moviesFromTo(startyear, endyear)
-        return render_template('index.html', yearsmovie = movies)
-    return redirect(url_for('movie'))
+    startyear = session['start']
+    endyear = session['end']
+    movies = movies.moviesFromTo(startyear, endyear)
+    return render_template('index.html', yearsmovie = movies)
 @app.route("/name", methods=["POST"])
 def name():
-    if (session):
-        name = session['name']
-        movies = movies.moviesThisPerformerIn(name)
-        return render_template('index.html', namemovie = movies)
-    return redirect(url_for('movie'))
+    name = session['name']
+    movies = movies.moviesThisPerformerIn(name)
+    return render_template('index.html', namemovie = movies)
 @app.route("/genre", methods=["POST"])
 def genre():
-    if (session):
-        genre = session['genre']
-        movies = movies.moviesInThisGenre(genre)
-        return render_template('index.html', genremovie = movies)
-    return redirect(url_for('movie'))
+    genre = session['genre']
+    movies = movies.moviesInThisGenre(genre)
+    return render_template('index.html', genremovie = movies)
 if __name__ == "__main__":
     app.debug = True
     app.run(host='0.0.0.0')
