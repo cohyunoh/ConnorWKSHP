@@ -7,9 +7,6 @@ from sys import argv
 
 FILENAME = "utl/movies.json"
 
-client = MongoClient()
-db = client.TobyTop40
-movies = db.movies
 
 def load_mongo_json(filename,coll):
     with open(filename,"r") as jsonfile:
