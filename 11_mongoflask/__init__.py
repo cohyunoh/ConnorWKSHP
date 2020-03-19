@@ -14,18 +14,18 @@ def movie():
 def year():
     startyear = request.form['start']
     endyear = request.form['end']
-    movies = movies.moviesFromTo(startyear, endyear)
-    return render_template('index.html', yearsmovie = movies)
+    listmovies = movies.moviesFromTo(startyear, endyear)
+    return render_template('index.html', yearsmovie = listmovies)
 @app.route("/name", methods=["POST"])
 def name():
     name = request.form['name']
-    movies = movies.moviesThisPerformerIn(name)
-    return render_template('index.html', namemovie = movies)
+    listmovies = movies.moviesThisPerformerIn(name)
+    return render_template('index.html', namemovie = listmovies)
 @app.route("/genre", methods=["POST"])
 def genre():
     genre = request.form['genre']
-    movies = movies.moviesInThisGenre(genre)
-    return render_template('index.html', genremovie = movies)
+    listmovies = movies.moviesInThisGenre(genre)
+    return render_template('index.html', genremovie = listmovies)
 if __name__ == "__main__":
     app.debug = True
     app.run(host='0.0.0.0')
