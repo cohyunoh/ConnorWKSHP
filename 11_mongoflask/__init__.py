@@ -25,7 +25,7 @@ def movie():
 def year():
     startyear = request.form['start']
     endyear = request.form['end']
-    listmovies = movies.moviesFromTo(startyear, endyear)
+    listmovies = movies.moviesFromTo(int(startyear), int(endyear));
     return render_template('index.html', yearsmovie = listmovies)
 @app.route("/name", methods=["POST"])
 def name():
