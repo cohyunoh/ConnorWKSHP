@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: #E5E8E8;
 }
 
 h1 {
@@ -7,14 +7,26 @@ h1 {
   text-align: center;
 }
 
+hr {
+  border: 1px solid #17A589;
+}
+
 .center{
   text-align: center;
+  align-content: center;
 }
 
 .left {
   text-align: left;
+  align-content: left;
 }
 
 .right {
   text-align: right;
+  align-content: right;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
 }
