@@ -3,11 +3,140 @@
   <head>
     <meta charset="utf-8"/>
     <title>SQLITE INJECTION</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
     <h1>SQLITE INJECTION PSA</h1>
-    <p>To All My Fellow Software Development devos, whether future or present, this PSA is being made for your benefit</p>
-    
+    <div class="center">
+      <p>To All My Fellow Software Development devos, whether future or present, this PSA is being made for your benefit</p>
+    </div>
+    <hr>
+    <div class="center">
+      <h3>This Applies to All Who Have Done:</h3>
+    </div>
+    <div class="left" style = "margin-left: 150px; border: 3px solid darkblue; margin-right: 150px; padding: 3px;">
+      <ul>
+        <li>A Login/Register Page</li>
+        <li>A Query Search Bar</li>
+        <li>ANY TYPE OF INPUT THAT INTERACTS WITH A SQLITE TABLE</li>
+      </ul>
+    </div>
+    <div class="center">
+      <h2> YOU ARE AT RISK OF POSSIBLE HACKS </h2>
+      <p>Let's Dive Deeper Into What These Hacks Are and How to Defend Against Them</p>
+    </div>
+    <hr>
+    <div class="left" style = "margin-left: 150px; border: 3px solid darkblue; margin-right: 150px; padding: 3px;">
+      <h3> <u><i> SQLite Injection: What is It? </i></u> </h3>
+      <ul>
+        <li>This is one of the most frequently occurring web hacks</li>
+        <li>It entails a hacker using web page inputs to insert malicious code in the SQL statements</li>
+        <li>These inputs could be login/register pages or anything that relates back to a database</li>
+      </ul>
+    </div>
+    <hr>
+    <div class="left" style = "margin-left: 150px; border: 3px solid darkblue; margin-right: 150px; padding: 3px;">
+      <h3> <u><i> SQLite Injection: Ramifications of a Hack </i></u> </h3>
+      <ul>
+        <li>The attacker can login without having credentials</li>
+          <ul><li>May be even worse if they log into an admin account</li></ul>
+        <li>The attacker can insert malicious code into the database</li>
+          <ul>
+            <li>They can change the contents of the database</li>
+            <li>Add their own account</li>
+            <li>Possibly add unauthorized items into a list</li>
+          </ul>
+        <li>The attacker can make alterations to the availability of code by deleting tables</li>
+        <ul>
+          <li>Tables can relate to other tables</li>
+          <li>You can lose data</li>
+          <li>If functions call back to that table, they will also break</li>
+        </ul>
+        <li>The attacker can make the operations of the host OS fail</li>
+      </ul>
+    </div>
+    <hr>
+    <div class="left" style = "margin-left: 150px; border: 3px solid darkblue; margin-right: 150px; padding: 3px;">
+      <h3> <u><i> SQLite Injection: Examples </i></u> </h3>
+      <div class="center">
+        <h4>Here Is an Example of a Hacker trying to access my Blog I made</h4>
+        <hr>
+        <img src="images/slide1.JPG" alt="slide1">
+        <hr>
+        <h3>" OR 1 = 1 -- </h3>
+      </div>
+      <ul>
+        <li>When inputted, this is sent back to the backend of your flask app</li>
+        <li>Usually when a “username” and “password” it is sent back to the backend and inserted into the SQLite statement:</li>
+        <ul>
+          <li>SELECT * FROM users WHERE username = “username” AND password = “password”</li>
+        </ul>
+        <li>With the injection this is the statement: </li>
+        <ul>
+          <li>SELECT * FROM users WHERE username = “ ” OR 1=1-- “ AND password = “foo”</li>
+        </ul>
+        <li>Which simplifies the statement: </li>
+        <ul>
+          <li>SELECT * FROM users WHERE username = “ ” OR 1=1</li>
+          <li>The “--” cancels the rest of the statment</li>
+        </ul>
+        <li>This happens if you are utilizing the sting concatanation feature in python</li>
+        <ul>
+          <li>This is not safe as there are no safeguards and allows just about anything to get in</li>
+        </ul>
+      </ul>
+      <hr>
+      <div class="center">
+        <h4>Here Is Another Example of a Hacker trying to Insert Malicious Code</h4>
+        <hr>
+        <img src="images/slide2.JPG" alt="slide2">
+      </div>
+      <hr>
+      <div class="center">
+        <h4>Here Is A Fibal Example of a Hacker trying to Drop A Table</h4>
+        <hr>
+        <img src="images/slide3.JPG" alt="slide3">
+        <h4>The full line is: " OR 1 = 1; DROP TABLE users --</h4>
+      </div>
+      <hr>
+    </div>
+    <hr>
+    <div class="left" style = "margin-left: 150px; border: 3px solid darkblue; margin-right: 150px; padding: 3px;">
+      <h3> <u><i> SQLite Injection: Protection </i></u> </h3>
+      <div class="center">
+        <h4>My Code Looked Like this Before:</h4>
+        <hr>
+        <img src="images/slide4.JPG" alt="slide4">
+        <hr>
+      </div>
+      <ul>
+        <li>I used .format which uses the string concatanation</li>
+        <li> <b><u>THEREFORE: NOT SAFE</u></b> </li>
+      </ul>
+      <hr>
+      <div class="center">
+        <h4>Now it Looks Like This</h4>
+        <hr>
+        <img src="images/slide5.JPG" alt="slide5">
+        <hr>
+      </div>
+      <ul>
+        <li>This works because the inputs are not directly put into the code and will not be added unless the code actually works</li>
+        <li> This sets up placeholders so that the database can fill in the data values properly and safely. </li>
+        <ul>
+          <li>The placeholders are the ?</li>
+        </ul>
+      </ul>
+    </div>
+    <hr>
+    <div class="left" style = "margin-left: 150px; border: 3px solid darkblue; margin-right: 150px; padding: 3px;">
+      <h3> <u><i> SQLite Injection: Sources </i></u> </h3>
+      <ul>
+        <li><a href="https://www.getastra.com/blog/knowledge-base/understanding-sql-injection-attacks/">Get Astra</a></li>
+        <li><a href="https://www.tutlane.com/tutorial/sqlite/sqlite-injection-attacks#divsqliteinjex2">Tutlane</a></li>
+        <li><a href="https://portswigger.net/support/using-sql-injection-to-bypass-authentication">PostSwigger</a></li>
+        <li><a href="https://github.com/unicornsasfuel/sqlite_sqli_cheat_sheet">CHEAT SHEET</a></li>
+      </ul>
+    </div>
   </body>
 </html>
