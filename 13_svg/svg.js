@@ -33,32 +33,36 @@ var drawCircle = function(e){
       circle.setAttribute("cy",y);
       circle.setAttribute("fill", "blue");
       //big brain move to add event listeners to the circles themselves
-      circle.addEventListener('click', changeColor);
-      circle.addEventListener('click', move);
+      circle.addEventListener('click', changecircle);
       svg.appendChild(circle);
     }
 };
 
+
+var changecircle = function(e){
+  if(e.target.getAttribute("fill") == "blue"){
+    changeColor(e);
+  }else if (e.target.getAttribute("fill") == "aqua"){
+    move(e);
+  }
+}
+
 var changeColor = function(e){
   //simply just replace the color
-  if(e.target.getAttribute("fill") == "blue"){
-    //pro tip: .target holds the attributes
-    e.target.setAttribute("fill", "aqua");
-  }
+  delete e.fill;
+  //pro tip: .target holds the attributes
+  e.target.setAttribute("fill", "aqua");
 };
 
 var move = function(e){
-  if(e.target.getAttribute("fill") == "aqua"){
+    delete e.fill;
     e.target.setAttribute("fill", "blue");
     var x = Math.floor(Math.random() * 500);
     var y = Math.floor(Math.random() * 500);
     e.target.setAttribute("cx", x);
-    e.target.setAttribute("cy", y);
-  }
 };
 
 
 
 clearbutton.addEventListener('click', clearSvg);
 svg.addEventListener('click',drawCircle);
-svg.addEventListener('click',changeColor);
