@@ -58,6 +58,7 @@ var move = function() {
     if (x > parseInt(svg.getAttribute("width")) - radius) {
       cir.setAttribute("vx", -vx);
       vx = -vx;
+
     } else if (x < radius) {
       cir.setAttribute("vx", -vx);
       vx = -vx;
@@ -71,15 +72,17 @@ var move = function() {
     }
 
   }
-  if(bounce){
-    bounceballs();
-  }
   if (requestID != 0) {
     requestID = window.requestAnimationFrame(move);
   }
+  if(bounce){
+    bounceballs();
+  }
+
 };
 
 var collision = function(ball1, ball2){
+  //checks how close the balls are together and if they are touching, they are colliding
   var oneX= parseInt(ball1.getAttribute("cx"));
   var oneY= parseInt(ball1.getAttribute("cy"));
   var twoX= parseInt(ball2.getAttribute("cx"));
@@ -103,10 +106,11 @@ var bounceballs = function(){
       var dist = Math.sqrt(dx * dx + dy * dy);
       if(collision(circles[i], circles[j])){
         //the balls must have some type of surface to push off of
-        var constraintX = dx / dist;
+        var constraintX = dx / dist; //treat as if we bouncing off a slanted floor
         var constraintY = dy / dist;
         var mdpntX = (parseInt(circles[j].getAttribute("cx")) + parseInt(circles[i].getAttribute("cx"))) / 2;
         var mdpntY = (parseInt(circles[j].getAttribute("cy")) + parseInt(circles[i].getAttribute("cy"))) / 2;
+        //bounce back
         circles[i].setAttribute("cx", mdpntX - constraintX * radius);
         circles[i].setAttribute("cy", mdpntY - constraintY * radius);
         circles[j].setAttribute("cx", mdpntX + constraintX * radius);
@@ -115,10 +119,10 @@ var bounceballs = function(){
         dVec += (parseInt(circles[i].getAttribute("vy")) - parseInt(circles[j].getAttribute("vy"))) * constraintY;
         var dvx = dVec * constraintX;
         var dvy = dVec * constraintY;
-        circles[i].setAttribute("vx", circles[i].getAttribute("vx") - dvx);
-        circles[i].setAttribute("vy", circles[i].getAttribute("vy") - dvy);
-        circles[j].setAttribute("vx", circles[j].getAttribute("vx") + dvx);
-        circles[j].setAttribute("vy", circles[j].getAttribute("vy") + dvy);
+        circles[i].setAttribute("vx", parseInt(circles[i].getAttribute("vx")) - dvx);
+        circles[i].setAttribute("vy", parseInt(circles[i].getAttribute("vy")) - dvy);
+        circles[j].setAttribute("vx", parseInt(circles[j].getAttribute("vx")) + dvx);
+        circles[j].setAttribute("vy", parseInt(circles[j].getAttribute("vy")) + dvy);
       }
     }
   }
