@@ -1,0 +1,4 @@
+- d3 good for data visualization?
+- d3 can dynamically update charts as data changes
+  - pretty sure it can dynamically update anything?
+  
