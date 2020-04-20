@@ -1,5 +1,9 @@
-var render = document.getElementById('render');
-var transition = document.getElementById('transition');
+var renderbutton = document.getElementById('render');
+var transitionbutton = document.getElementById('transition');
+
+var svg;
+var x,y;
+var width;
 
 var render = function(e){
   var numstudents = []
@@ -23,6 +27,8 @@ var transition = function(e){
 var visualize = function(data){
   console.log(data);
 };
+
+
 
 render.addEventListener('click', render);
 transition.addEventListener('click', transition);
