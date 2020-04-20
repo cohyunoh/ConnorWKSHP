@@ -14,7 +14,15 @@ var transition = function(e){
   var stats = []
   var i;
   for(i=0; i < data.length; i++){
-    stats.push([data[i][1],data[i][2],data[i][3]);
+    list = [data[i][1], data[i][2], data[i][3]];
+    stats.push(list);
   };
   d3.select("body").transition(visualize(stats));
 };
+
+var visualize = function(data){
+  console.log(data);
+};
+
+render.addEventListener('click', render);
+transition.addEventListener('click', transition);
