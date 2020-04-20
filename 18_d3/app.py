@@ -21,5 +21,5 @@ def main():
     return render_template('home.html', info=info, names=schools)
 
 if __name__ == "__main__":
-    app.debug = False
+    app.debug = True
     app.run()
