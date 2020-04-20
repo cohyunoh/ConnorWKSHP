@@ -11,7 +11,6 @@ var render = function(e){
   for(i=0; i < data.length; i++){
     numstudents.push(data[i][0]);
   };
-  visualize(numstudents);
 };
 
 var transition = function(e){
@@ -21,12 +20,8 @@ var transition = function(e){
     list = [data[i][1], data[i][2], data[i][3]];
     stats.push(list);
   };
-  d3.select("body").transition(visualize(stats));
 };
 
-var visualize = function(data){
-  console.log(data);
-};
 
 
 
