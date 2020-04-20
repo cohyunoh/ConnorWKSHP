@@ -8,14 +8,18 @@
     <button id="render">Render</button>
     <button id="transition">Transition</button>
     <br>
-    <div class="chart">
-    </div>
+    <div class="chart"></div>
+    <!-- our chart -->
     <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
-
+    <!-- establishes d3 -->
     <script type="text/javascript" charset="utf-8">
+      var names = {{ names | safe}}
+      //safe to render this directly without escaping
       var data = {{ csv }};
+      //adds all the data we need for this to work
     </script>
 
     <script src="{{ url_for('static', filename='d3.js') }}"></script>
+    <!--  -->
   </body>
 </html>
