@@ -10,7 +10,7 @@ def readin():
             if (row[0] != 'DBN' and row[1] in list): #we do not want the first row
                 dict[row[1]] = [int(row[2]), int(row[3]), int(row[4]), int(row[5])]
         #        school name, # of test takers, Critical Reading Mean,Mathematics Mean,Writing Mean
-        print(dict)
+        #print(dict)
     return dict
 
 @app.route("/") #assign following fxn to run when root route requested
@@ -18,6 +18,9 @@ def main():
     csvfile = readin()
     schools = list(csvfile.keys()) #put all the school names into a list
     info = list(csvfile.values()) #put all the information into a list
+    #print(schools)
+    #print("SDL:SDJKFLSDJFIJSEOSE:LIEJ:LIEFJS:ILEFJ")
+    print(info)
     return render_template('home.html', info=info, names=schools)
 
 if __name__ == "__main__":
