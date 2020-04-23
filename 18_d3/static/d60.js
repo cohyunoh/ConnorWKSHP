@@ -16,7 +16,7 @@ var xScale = d3.scaleBand().range ([0, width]).padding(0.4),
 var g = svg.append("g")
            .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-
+var titles = ["Number of Test Takers","Critical Reading Mean","Mathematics Mean","Writing Mean"]
 
 var render = function(e){
   var stats = []
@@ -40,10 +40,13 @@ var render = function(e){
        return d;
    }).ticks(10))
    .append("text")
+   .attr("class", "yaxis")
    .attr("y", 6)
    .attr("dy", "0.71em")
    .attr("text-anchor", "end")
-   .text("value");
+   .attr("stroke", "black")
+   .text(titles[iter]);
+
 
    g.selectAll(".bar")
           .data(names)
@@ -58,14 +61,33 @@ var render = function(e){
 };
 
 var transition = function(e){
-  if(iter + 1 == 3){
+  if(iter + 1 == 4){
     iter = 0;
   }
   else iter++;
   console.log(iter)
-  return render();
-};
+  var stats = []
+  var i;
+  for(i=0; i < data.length; i++){
+    stats.push(data[i][iter]);
+  };
+  console.log(stats);
 
+  svg.selectAll("rect")
+    .data(stats)
+    .transition()
+    .ease(d3.easeLinear)
+    .duration(100)
+    .attr("y", function(d) { return yScale(d); })
+    .attr("height", function(d) { return height - yScale(d); });
+  d3.selectAll("text.yaxis")
+    .transition()
+    .ease(d3.easeLinear)
+    .duration(100)
+    .text(titles[iter]);
+  };
+console.log(svg);
+console.log(g);
 
 
 
