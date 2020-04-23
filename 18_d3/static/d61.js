@@ -1,5 +1,11 @@
+// Connor Oh and Derek Leung: Team Fishy Business
+// Softdev2 pd9
+// K18 -- Come Up For Air
+// 2020-04-22
 var renderbutton = document.getElementById('render');
 var transitionbutton = document.getElementById('transition');
+
+var activated = false;
 
 var iter = 0;
 
@@ -19,45 +25,47 @@ var g = svg.append("g")
 var titles = ["Number of Test Takers","Critical Reading Mean","Mathematics Mean","Writing Mean"]
 
 var render = function(e){
-  var stats = []
-  var i;
-  for(i=0; i < data.length; i++){
-    stats.push(data[i][iter]);
-  };
-  console.log(stats);
-  console.log(names);
-  xScale.domain(names);
-  yScale.domain([0, d3.max(stats)]);
+  if (!activated){
+    activated = true;
+    var stats = []
+    var i;
+    for(i=0; i < data.length; i++){
+      stats.push(data[i][iter]);
+    };
+    console.log(stats);
+    console.log(names);
+    xScale.domain(names);
+    yScale.domain([0, d3.max(stats)]);
 
-  g.append("g")
-   .attr("transform", "translate(0," + height + ")")
-   .call(d3.axisBottom(xScale).tickFormat(function(d){
-     return d;
-   }).ticks(3))
-
-  g.append("g")
-   .call(d3.axisLeft(yScale).tickFormat(function(d){
+    g.append("g")
+     .attr("transform", "translate(0," + height + ")")
+     .call(d3.axisBottom(xScale).tickFormat(function(d){
        return d;
-   }).ticks(10))
-   .append("text")
-   .attr("class", "yaxis")
-   .attr("y", 6)
-   .attr("dy", "0.71em")
-   .attr("text-anchor", "end")
-   .attr("stroke", "black")
-   .text(titles[iter]);
+     }).ticks(3))
+
+    g.append("g")
+     .call(d3.axisLeft(yScale).tickFormat(function(d){
+         return d;
+     }).ticks(10))
+     .append("text")
+     .attr("class", "yaxis")
+     .attr("y", 6)
+     .attr("dy", "0.71em")
+     .attr("text-anchor", "end")
+     .attr("stroke", "black")
+     .text(titles[iter]);
 
 
-   g.selectAll(".bar")
-          .data(names)
-          .enter().append("rect")
-          .attr("class", "bar")
-          .attr("x", function(d) { return xScale(d); })
-          .data(stats)
-          .attr("y", function(d) { return yScale(d); })
-          .attr("width", xScale.bandwidth())
-          .attr("height", function(d) { return height - yScale(d); });
-
+     g.selectAll(".bar")
+            .data(names)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return xScale(d); })
+            .data(stats)
+            .attr("y", function(d) { return yScale(d); })
+            .attr("width", xScale.bandwidth())
+            .attr("height", function(d) { return height - yScale(d); });
+  };
 };
 
 var transition = function(e){
