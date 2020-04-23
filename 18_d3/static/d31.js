@@ -44,6 +44,17 @@ var render = function(e){
    .attr("dy", "0.71em")
    .attr("text-anchor", "end")
    .text("value");
+
+   g.selectAll(".bar")
+          .data(names)
+          .enter().append("rect")
+          .attr("class", "bar")
+          .attr("x", function(d) { return xScale(d); })
+          .data(stats)
+          .attr("y", function(d) { return yScale(d); })
+          .attr("width", xScale.bandwidth())
+          .attr("height", function(d) { return height - yScale(d); });
+
 };
 
 var transition = function(e){
